@@ -1,0 +1,7 @@
+# gateway log files
+mqtt_gateway.log*
+# vim swap / temporary files
+*.swp
+# debug logs from nodes
+node2_logs/
+openhab-2.2.0.zip

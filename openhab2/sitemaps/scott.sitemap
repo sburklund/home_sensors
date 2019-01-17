@@ -8,6 +8,7 @@ sitemap scott label="Scott Sitemap" {
         Text item=Node4Temp label="Temperature [%.2f]"
         Text item=Node4Humid label="Humidity [%.2f]"
         Text item=Node4Light label="Light Level [%d]"
+        Text item=garagelight label="Garage Light [%s]" labelcolor=[=="Garage Light on"="yellow"] valuecolor=[=="Garage Light on"="yellow"]
     }
 
     Frame label="Upstairs (Node 2)" {

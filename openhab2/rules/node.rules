@@ -35,3 +35,14 @@ then
         postUpdate(garagestate, "Sensor Error")
     }}}}
 end
+
+rule "garage light"
+when
+    Item Node4Light changed
+then
+    if (Node4Light.state > 100 ) {
+        postUpdate(garagelight, "Garage Light on")
+    } else {
+        postUpdate(garagelight, "Garage Light off")
+    }
+end

@@ -23,3 +23,4 @@ String Node4Motion <motion> {mqtt="<[mosq:/node4/motion:state:default]"}
 Number Node4Dist <none> {mqtt="<[mosq:/node4/tof:state:default]"}
 String garagestate <garagedoor>
 Number Node4RSSI <signal> {mqtt="<[mosq:/node4/RSSI:state:default]"}
+String garagelight <lightbulb>

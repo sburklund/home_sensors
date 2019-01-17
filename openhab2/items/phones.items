@@ -1,0 +1,6 @@
+Switch ScottsPhone { channel="network:pingdevice:scottsphone:online" }
+Number ScottsPhoneRespTime { channel="network:pingdevice:scottsphone:latency" }
+DateTime ScottsPhoneLastSeen { channel="network:pingdevice:scottsphone:lastseen" }
+
+Switch EmmsPhone { channel="network:pingdevice:emmalysphone:online" }
+DateTime EmmsPhoneLastSeen { channel="network:pingdevice:emmalysphone:lastseen" }

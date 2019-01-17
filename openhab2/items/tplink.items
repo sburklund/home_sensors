@@ -1,0 +1,3 @@
+Switch RPI_Outlet_Switch "RPi Outlet Switch" <switch> { channel="tplinksmarthome:hs105:home:switch" }
+Switch RPI_Outlet_LED "RPi Outlet LED" <switch> { channel="tplinksmarthome:hs105:home:led" }
+Number RPI_Outlet_RSSI "RPi Outlet Switch RSSI" <signal> { channel="tplinksmarthome:hs105:home:rssi" }

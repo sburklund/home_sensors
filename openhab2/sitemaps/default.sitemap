@@ -1,0 +1,4 @@
+sitemap default label="My First Sitemap" {
+  Switch item=mySwitch label="Office Light"
+  Text item=my_temp
+}

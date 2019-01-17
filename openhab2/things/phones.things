@@ -1,0 +1,3 @@
+Thing network:pingdevice:scottsphone [hostname="192.168.1.140", refreshInterval=1000, retries="5"]
+
+Thing network:pingdevice:emmalysphone [hostname="192.168.1.150", refreshInterval=1000, retries="5"]

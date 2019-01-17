@@ -1,0 +1,7 @@
+rule PhoneStateChanged
+when
+  Item ScottsPhone changed from OFF to ON
+then
+  executeCommandLine("mpg123 /etc/openhab2/sounds/hiscott.mp3")
+  playSound("hiscott.mp3")
+end

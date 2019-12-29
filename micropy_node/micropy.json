@@ -6,7 +6,9 @@
     "dev-packages": {
         "micropy-cli": "*"
     },
-    "packages": {},
+    "packages": {
+        "micropython-umqtt-simple": "*"
+    },
     "config": {
         "vscode": true,
         "pylint": true

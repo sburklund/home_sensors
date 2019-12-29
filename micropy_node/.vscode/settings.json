@@ -1,0 +1,11 @@
+{
+    "python.linting.enabled": true,
+    "python.jediEnabled": false,
+
+    // Loaded Stubs:  esp8266-micropython-1.11.0 
+    "python.autoComplete.extraPaths": [".micropy/BradenM-micropy-stubs-8960068/frozen", ".micropy/BradenM-micropy-stubs-4c2702f/frozen", ".micropy/BradenM-micropy-stubs-8960068/stubs", ".micropy/micropy_node"],
+    "python.autoComplete.typeshedPaths":  [".micropy/BradenM-micropy-stubs-8960068/frozen", ".micropy/BradenM-micropy-stubs-4c2702f/frozen", ".micropy/BradenM-micropy-stubs-8960068/stubs", ".micropy/micropy_node"],
+    "python.analysis.typeshedPaths":  [".micropy/BradenM-micropy-stubs-8960068/frozen", ".micropy/BradenM-micropy-stubs-4c2702f/frozen", ".micropy/BradenM-micropy-stubs-8960068/stubs", ".micropy/micropy_node"],
+
+    "python.linting.pylintEnabled": true
+}

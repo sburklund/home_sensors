@@ -1,1 +1,3 @@
+micropython-uasyncio
+micropython-uasyncio-queues
 micropython-umqtt-simple

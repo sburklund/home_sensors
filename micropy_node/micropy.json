@@ -7,7 +7,9 @@
         "micropy-cli": "*"
     },
     "packages": {
-        "micropython-umqtt-simple": "*"
+        "micropython-umqtt-simple": "*",
+        "micropython-uasyncio": "*",
+        "micropython-uasyncio-queues": "*"
     },
     "config": {
         "vscode": true,

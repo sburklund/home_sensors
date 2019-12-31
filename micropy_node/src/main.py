@@ -1,6 +1,7 @@
 # main.py
 import os
 import config
+import dht
 import machine
 import uasyncio
 import uasyncio.queues
@@ -34,8 +35,19 @@ async def light_task(msg_queue):
         light_value = 1024 - light_adc.read()
         await msg_queue.put((config.MQTT_TOPIC_LIGHT, str(light_value).encode('ascii')))
 
+async def temp_humid_task(msg_queue):
+    temp_humid_sensor = dht.DHT11(machine.Pin(config.TEMP_SENSOR_PIN))
+    while True:
+        await uasyncio.sleep(config.TEMP_POLLING_PERIOD)
+        temp_humid_sensor.measure()
+        temp_value = (temp_humid_sensor.temperature() * (9/5)) + 32
+        humid_value = temp_humid_sensor.humidity()
+        await msg_queue.put((config.MQTT_TOPIC_TEMP, str(temp_value).encode('ascii')))
+        await msg_queue.put((config.MQTT_TOPIC_HUMID, str(humid_value).encode('ascii')))
+
 loop = uasyncio.get_event_loop()
 loop.create_task(mqtt_task(mqtt_queue))
 loop.create_task(heartbeat_task(mqtt_queue))
 loop.create_task(light_task(mqtt_queue))
+loop.create_task(temp_humid_task(mqtt_queue))
 loop.run_until_complete(killer())

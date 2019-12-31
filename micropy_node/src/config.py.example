@@ -5,7 +5,12 @@ MQTT_HOST = 'example_ip_address'
 
 HEARTBEAT_PERIOD = 4 # units: seconds
 LIGHT_POLLING_PERIOD = 1 # units: seconds
+TEMP_POLLING_PERIOD = 10 # units: seconds
+
+TEMP_SENSOR_PIN = 14 # pin number on board
 
 MQTT_PREFIX = b'/node4'
 MQTT_TOPIC_HEARTBEAT = MQTT_PREFIX + b'/heartbeat'
 MQTT_TOPIC_LIGHT = MQTT_PREFIX + b'/light'
+MQTT_TOPIC_TEMP = MQTT_PREFIX + b'/temp'
+MQTT_TOPIC_HUMID = MQTT_PREFIX + b'/humid'

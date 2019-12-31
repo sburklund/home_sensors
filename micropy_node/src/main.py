@@ -20,14 +20,22 @@ async def mqtt_task(msg_queue):
         client.publish(result[0], result[1])
 
 async def killer():
-    await uasyncio.sleep(10)
+    await uasyncio.sleep(30)
 
 async def heartbeat_task(msg_queue):
     while True:
         await uasyncio.sleep(config.HEARTBEAT_PERIOD)
         await msg_queue.put((config.MQTT_TOPIC_HEARTBEAT, b'heartbeat ok'))
 
+async def light_task(msg_queue):
+    light_adc = machine.ADC(0)
+    while True:
+        await uasyncio.sleep(config.LIGHT_POLLING_PERIOD)
+        light_value = 1024 - light_adc.read()
+        await msg_queue.put((config.MQTT_TOPIC_LIGHT, str(light_value).encode('ascii')))
+
 loop = uasyncio.get_event_loop()
 loop.create_task(mqtt_task(mqtt_queue))
 loop.create_task(heartbeat_task(mqtt_queue))
+loop.create_task(light_task(mqtt_queue))
 loop.run_until_complete(killer())

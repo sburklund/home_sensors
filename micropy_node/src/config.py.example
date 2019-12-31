@@ -3,16 +3,20 @@ WIFI_SSID = 'Example_SSID'
 WIFI_PWD = 'example_password'
 MQTT_HOST = 'example_ip_address'
 
-HEARTBEAT_PERIOD = 4 # units: seconds
-LIGHT_POLLING_PERIOD = 1 # units: seconds
-TEMP_POLLING_PERIOD = 10 # units: seconds
-MOTION_POLLING_PERIOD = 1 # units: seconds
-MOTION_MIN_ONTIME     = 5  # units: seconds
+# all units: seconds
+HEARTBEAT_PERIOD      = 4
+LIGHT_POLLING_PERIOD  = 1
+TEMP_POLLING_PERIOD   = 10
+MOTION_POLLING_PERIOD = 1
+MOTION_MIN_ONTIME     = 5
+BLINK_ON_TIME         = .02
+BLINK_OFF_TIME        = 10
 
-TEMP_SENSOR_PIN = 14 # pin number on board
-MOTION_SENSOR_PIN = 12 # pin number on board
+# pin number on board
+TEMP_SENSOR_PIN   = 14
+MOTION_SENSOR_PIN = 12
 
-MQTT_PREFIX = b'/node4'
+MQTT_PREFIX = b'/node3'
 MQTT_TOPIC_HEARTBEAT = MQTT_PREFIX + b'/heartbeat'
 MQTT_TOPIC_LIGHT = MQTT_PREFIX + b'/light'
 MQTT_TOPIC_TEMP = MQTT_PREFIX + b'/temp'

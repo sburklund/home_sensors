@@ -22,12 +22,12 @@ async def mqtt_task(msg_queue):
 async def killer():
     await uasyncio.sleep(10)
 
-async def test_publish(msg_queue):
+async def heartbeat_task(msg_queue):
     while True:
-        await uasyncio.sleep(1)
-        await msg_queue.put((b'/hello', b'Hello from async'))
+        await uasyncio.sleep(config.HEARTBEAT_PERIOD)
+        await msg_queue.put((config.MQTT_TOPIC_HEARTBEAT, b'heartbeat ok'))
 
 loop = uasyncio.get_event_loop()
 loop.create_task(mqtt_task(mqtt_queue))
-loop.create_task(test_publish(mqtt_queue))
+loop.create_task(heartbeat_task(mqtt_queue))
 loop.run_until_complete(killer())

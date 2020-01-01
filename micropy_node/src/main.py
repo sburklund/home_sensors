@@ -45,7 +45,10 @@ async def light_task(msg_queue):
         await msg_queue.put((config.MQTT_TOPIC_LIGHT, str(light_value).encode('ascii')))
 
 async def temp_humid_task(msg_queue):
-    temp_humid_sensor = dht.DHT11(machine.Pin(config.TEMP_SENSOR_PIN))
+    if config.TEMP_SENSOR_TYPE == 'DHT22':
+        temp_humid_sensor = dht.DHT22(machine.Pin(config.TEMP_SENSOR_PIN))
+    else:
+        temp_humid_sensor = dht.DHT11(machine.Pin(config.TEMP_SENSOR_PIN))
     while True:
         await uasyncio.sleep(config.TEMP_POLLING_PERIOD)
         temp_humid_sensor.measure()

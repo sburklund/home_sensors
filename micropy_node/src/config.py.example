@@ -16,6 +16,10 @@ BLINK_OFF_TIME        = 10
 TEMP_SENSOR_PIN   = 14
 MOTION_SENSOR_PIN = 12
 
+# sensors available
+TEMP_SENSOR_TYPE  = 'DHT22'
+
+# mqtt settings
 MQTT_PREFIX = b'/node3'
 MQTT_TOPIC_HEARTBEAT = MQTT_PREFIX + b'/heartbeat'
 MQTT_TOPIC_LIGHT = MQTT_PREFIX + b'/light'

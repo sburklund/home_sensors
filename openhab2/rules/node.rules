@@ -46,3 +46,24 @@ then
         postUpdate(garagelight, "Garage Light off")
     }
 end
+
+rule "node 2 heartbeat update"
+when
+    Item Node2Heartbeat received update
+then
+    postUpdate(Node2LastUpdate, new DateTimeType())
+end
+
+rule "node 3 heartbeat update"
+when
+    Item Node3Heartbeat received update
+then
+    postUpdate(Node3LastUpdate, new DateTimeType())
+end
+
+rule "node 4 heartbeat update"
+when
+    Item Node4Heartbeat received update
+then
+    postUpdate(Node4LastUpdate, new DateTimeType())
+end

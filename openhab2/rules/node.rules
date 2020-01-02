@@ -58,3 +58,30 @@ when
 then
     postUpdate(Node4LastUpdate, new DateTimeType())
 end
+
+rule "node 2 last motion"
+when
+    Item Node2Motion received update
+then
+    if (Node2Motion.state == "Activity") {
+        postUpdate(Node2LastMotion, new DateTimeType())
+    }
+end
+
+rule "node 3 last motion"
+when
+    Item Node3Motion received update
+then
+    if (Node3Motion.state == "Activity") {
+        postUpdate(Node3LastMotion, new DateTimeType())
+    }
+end
+
+rule "node 4 last motion"
+when
+    Item Node4Motion received update
+then
+    if (Node4Motion.state == "Activity") {
+        postUpdate(Node4LastMotion, new DateTimeType())
+    }
+end

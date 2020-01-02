@@ -71,6 +71,21 @@ async def motion_task(msg_queue):
         else:
             await msg_queue.put((config.MQTT_TOPIC_MOTION, b'No Activity'))
 
+async def sonar_task(msg_queue):
+    trigger_pin = machine.Pin(config.SONAR_TRIGGER_PIN, machine.Pin.OUT)
+    echo_pin = machine.Pin(config.SONAR_ECHO_PIN, machine.Pin.IN)
+    while True:
+        await uasyncio.sleep(config.SONAR_POLLING_PERIOD)
+        trigger_pin.on()
+        utime.sleep_us(10)
+        trigger_pin.off()
+        time_of_flight = machine.time_pulse_us(echo_pin, 1, int(config.SONAR_TIMEOUT * 1e6))
+        if time_of_flight > 0:
+            distance = time_of_flight / 148
+        else:
+            distance = time_of_flight  # report time of flight errors
+        await msg_queue.put((config.MQTT_TOPIC_SONAR, str(distance).encode('ascii')))
+
 loop = uasyncio.get_event_loop()
 loop.create_task(mqtt_task(mqtt_queue))
 loop.create_task(heartbeat_task(mqtt_queue))
@@ -78,5 +93,7 @@ loop.create_task(blink_light_task())
 loop.create_task(light_task(mqtt_queue))
 loop.create_task(temp_humid_task(mqtt_queue))
 loop.create_task(motion_task(mqtt_queue))
+if config.HAS_SONAR_SENSOR:
+    loop.create_task(sonar_task(mqtt_queue))
 loop.run_forever()
 #loop.run_until_complete(killer())

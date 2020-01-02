@@ -36,3 +36,12 @@ Number Node4Dist <none> {mqtt="<[mosq:/node4/tof:state:default]"}
 String garagestate <garagedoor>
 Number Node4RSSI <signal> {mqtt="<[mosq:/node4/rssi:state:default]"}
 String garagelight <lightbulb>
+
+String Node5Heartbeat <none> {mqtt="<[mosq:/node5/heartbeat:state:default]"}
+DateTime Node5LastUpdate <none> {mqtt="<[mosq:/node5/time:state:default]"}
+Number Node5Temp <temperature> {mqtt="<[mosq:/node5/temp:state:default]"}
+Number Node5Humid <humidity> {mqtt="<[mosq:/node5/humid:state:default]"}
+Number Node5Light <lightbulb> {mqtt="<[mosq:/node5/light:state:default]"}
+String Node5Motion <motion> {mqtt="<[mosq:/node5/motion:state:default]"}
+DateTime Node5LastMotion <none>
+Number Node5RSSI <signal> {mqtt="<[mosq:/node5/rssi:state:default]"}

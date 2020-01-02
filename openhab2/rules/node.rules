@@ -1,17 +1,17 @@
-rule "garage door" 
-when 	
-    Item Node2Dist changed 
-then 
-    if(Node2Dist.state < 1000) { 
+rule "garage door"
+when
+    Item Node2Dist changed
+then
+    if(Node2Dist.state < 1000) {
         postUpdate(garagedoor, OPEN) }
     else{postUpdate(garagedoor, CLOSED) }
 end
 
-rule "light level" 
-when 	
-    Item Node2Light changed 
-then 
-    if(Node2Light.state > 300 && garagedoor.state == CLOSED) { 
+rule "light level"
+when
+    Item Node2Light changed
+then
+    if(Node2Light.state > 300 && garagedoor.state == CLOSED) {
         postUpdate(lightlevel, ON) }
     else{postUpdate(lightlevel, OFF) }
 end

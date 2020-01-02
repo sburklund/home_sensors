@@ -1,2 +1,2 @@
 Thing network:device:light "MyLight" [hostname="mint-xfce"]
-Thing yahooweather:weather:berlin [ location=638242 ] 
+Thing yahooweather:weather:berlin [ location=638242 ]

@@ -44,6 +44,7 @@ sitemap scott label="Scott Sitemap" {
     Frame label="Signal Strengths" {
         Text item=Node4RSSI label="Garage (Node4) RSSI [%d]"
         Text item=Node2RSSI label="Upstairs (Node2) RSSI [%d]"
+        Text item=Node1RSSI label="Main Level (Node1) RSSI [%d]"
         Text item=Node3RSSI label="Basement (Node3) RSSI [%d]"
         Text item=RPI_Outlet_RSSI label="RPi3 Plug RSSI [%d]"
     }

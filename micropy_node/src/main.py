@@ -3,6 +3,7 @@ import os
 import config
 import dht
 import machine
+import network
 import uasyncio
 import uasyncio.queues
 import ubinascii
@@ -86,6 +87,12 @@ async def sonar_task(msg_queue):
             distance = time_of_flight  # report time of flight errors
         await msg_queue.put((config.MQTT_TOPIC_SONAR, str(distance).encode('ascii')))
 
+async def rssi_task(msg_queue):
+    sta_if = network.WLAN(network.STA_IF)
+    while True:
+        await uasyncio.sleep(config.RSSI_POLLING_PERIOD)
+        await msg_queue.put((config.MQTT_TOPIC_RSSI, str(sta_if.status('rssi')).encode('ascii')))
+
 loop = uasyncio.get_event_loop()
 loop.create_task(mqtt_task(mqtt_queue))
 loop.create_task(heartbeat_task(mqtt_queue))
@@ -95,5 +102,6 @@ loop.create_task(temp_humid_task(mqtt_queue))
 loop.create_task(motion_task(mqtt_queue))
 if config.HAS_SONAR_SENSOR:
     loop.create_task(sonar_task(mqtt_queue))
+loop.create_task(rssi_task(mqtt_queue))
 loop.run_forever()
 #loop.run_until_complete(killer())

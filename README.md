@@ -35,3 +35,16 @@ esp.check_fw()
     HAS_SONAR_SENSOR  = True
     ```
 4. Use the 'Upload' button in the VSCode status bar to push the main.py and config.py to the node
+
+# WebREPL
+Only the local copy of the WebREPL seems to be working, rather than the online hosted version.  Download
+the REPL client from: https://github.com/micropython/webrepl
+After connecting to the device and typing in the password, hit Ctrl-c to kill the MQTT application. The
+REPL will not respoond while the application is running. Ctrl-d will disconnect from the REPL, and start the
+application again.
+
+## Listing files on the device
+```
+import os
+os.listdir()
+```

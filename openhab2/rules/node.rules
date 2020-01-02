@@ -38,6 +38,13 @@ then
     }
 end
 
+rule "node 1 heartbeat update"
+when
+    Item Node1Heartbeat received update
+then
+    postUpdate(Node1LastUpdate, new DateTimeType())
+end
+
 rule "node 2 heartbeat update"
 when
     Item Node2Heartbeat received update
@@ -57,6 +64,15 @@ when
     Item Node4Heartbeat received update
 then
     postUpdate(Node4LastUpdate, new DateTimeType())
+end
+
+rule "node 1 last motion"
+when
+    Item Node1Motion received update
+then
+    if (Node1Motion.state == "Activity") {
+        postUpdate(Node1LastMotion, new DateTimeType())
+    }
 end
 
 rule "node 2 last motion"

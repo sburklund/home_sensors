@@ -1,3 +1,12 @@
+String Node1Heartbeat <none> {mqtt="<[mosq:/node1/heartbeat:state:default]"}
+DateTime Node1LastUpdate <none> {mqtt="<[mosq:/node1/time:state:default]"}
+Number Node1Temp <temperature> {mqtt="<[mosq:/node1/temp:state:default]"}
+Number Node1Humid <humidity> {mqtt="<[mosq:/node1/humid:state:default]"}
+Number Node1Light <lightbulb> {mqtt="<[mosq:/node1/light:state:default]"}
+String Node1Motion <motion> {mqtt="<[mosq:/node1/motion:state:default]"}
+DateTime Node1LastMotion <none>
+Number Node1RSSI <signal> {mqtt="<[mosq:/node1/RSSI:state:default]"}
+
 String Node2Heartbeat <none> {mqtt="<[mosq:/node2/heartbeat:state:default]"}
 DateTime Node2LastUpdate <none> {mqtt="<[mosq:/node2/time:state:default]"}
 Number Node2Temp <temperature> {mqtt="<[mosq:/node2/temp:state:default]"}

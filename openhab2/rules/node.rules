@@ -1,12 +1,3 @@
-rule "garage door"
-when
-    Item Node2Dist changed
-then
-    if(Node2Dist.state < 1000) {
-        postUpdate(garagedoor, OPEN) }
-    else{postUpdate(garagedoor, CLOSED) }
-end
-
 rule "garage state"
 when
     Item Node4Dist changed

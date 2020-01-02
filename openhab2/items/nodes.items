@@ -2,10 +2,7 @@ String Node2Heartbeat <none> {mqtt="<[mosq:/node2/heartbeat:state:default]"}
 DateTime Node2LastUpdate <none> {mqtt="<[mosq:/node2/time:state:default]"}
 Number Node2Temp <temperature> {mqtt="<[mosq:/node2/temp:state:default]"}
 Number Node2Humid <humidity> {mqtt="<[mosq:/node2/humid:state:default]"}
-Number Node2Dist <none> {mqtt="<[mosq:/node2/tof:state:default]"}
-Contact garagedoor
 Number Node2Light <lightbulb> {mqtt="<[mosq:/node2/light:state:default]"}
-Switch lightlevel
 String Node2Motion <motion> {mqtt="<[mosq:/node2/motion:state:default]"}
 Number Node2RSSI <signal> {mqtt="<[mosq:/node2/RSSI:state:default]"}
 

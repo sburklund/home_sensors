@@ -7,15 +7,6 @@ then
     else{postUpdate(garagedoor, CLOSED) }
 end
 
-rule "light level"
-when
-    Item Node2Light changed
-then
-    if(Node2Light.state > 300 && garagedoor.state == CLOSED) {
-        postUpdate(lightlevel, ON) }
-    else{postUpdate(lightlevel, OFF) }
-end
-
 rule "garage state"
 when
     Item Node4Dist changed

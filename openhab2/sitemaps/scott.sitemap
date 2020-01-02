@@ -16,7 +16,6 @@ sitemap scott label="Scott Sitemap" {
     Frame label="Upstairs (Node 2)" {
         Text item=Node2LastUpdate label="Last Update [%1$tF %1$tT]"
         Text item=Node2Motion label="Motion Detected [%s]" labelcolor=[=="Activity"="red"] valuecolor=[=="Activity"="red"]
-        Text item=Node2Dist label="Distance [%.2f (μsec.)]"
         Text item=Node2Temp label="Temperature [%.2f]"
         Text item=Node2Humid label="Humidity [%.2f]"
         Text item=Node2Light label="Light Level [%d]"

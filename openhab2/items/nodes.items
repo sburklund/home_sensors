@@ -6,6 +6,7 @@ Number Node1Light <lightbulb> {mqtt="<[mosq:/node1/light:state:default]"}
 String Node1Motion <motion> {mqtt="<[mosq:/node1/motion:state:default]"}
 DateTime Node1LastMotion <none>
 Number Node1RSSI <signal> {mqtt="<[mosq:/node1/rssi:state:default]"}
+String Node1IPAddr <none> {mqtt="<[mosq:/node1/ip_addr:state:default]"}
 
 String Node2Heartbeat <none> {mqtt="<[mosq:/node2/heartbeat:state:default]"}
 DateTime Node2LastUpdate <none> {mqtt="<[mosq:/node2/time:state:default]"}
@@ -15,6 +16,7 @@ Number Node2Light <lightbulb> {mqtt="<[mosq:/node2/light:state:default]"}
 String Node2Motion <motion> {mqtt="<[mosq:/node2/motion:state:default]"}
 DateTime Node2LastMotion <none>
 Number Node2RSSI <signal> {mqtt="<[mosq:/node2/rssi:state:default]"}
+String Node2IPAddr <none> {mqtt="<[mosq:/node2/ip_addr:state:default]"}
 
 String Node3Heartbeat <none> {mqtt="<[mosq:/node3/heartbeat:state:default]"}
 DateTime Node3LastUpdate <none> {mqtt="<[mosq:/node3/time:state:default]"}
@@ -24,6 +26,7 @@ Number Node3Light <lightbulb> {mqtt="<[mosq:/node3/light:state:default]"}
 String Node3Motion <motion> {mqtt="<[mosq:/node3/motion:state:default]"}
 DateTime Node3LastMotion <none>
 Number Node3RSSI <signal> {mqtt="<[mosq:/node3/rssi:state:default]"}
+String Node3IPAddr <none> {mqtt="<[mosq:/node3/ip_addr:state:default]"}
 
 String Node4Heartbeat <none> {mqtt="<[mosq:/node4/heartbeat:state:default]"}
 DateTime Node4LastUpdate <none> {mqtt="<[mosq:/node4/time:state:default]"}
@@ -35,6 +38,7 @@ DateTime Node4LastMotion <none>
 Number Node4Dist <none> {mqtt="<[mosq:/node4/tof:state:default]"}
 String garagestate <garagedoor>
 Number Node4RSSI <signal> {mqtt="<[mosq:/node4/rssi:state:default]"}
+String Node4IPAddr <none> {mqtt="<[mosq:/node4/ip_addr:state:default]"}
 String garagelight <lightbulb>
 
 String Node5Heartbeat <none> {mqtt="<[mosq:/node5/heartbeat:state:default]"}
@@ -45,3 +49,4 @@ Number Node5Light <lightbulb> {mqtt="<[mosq:/node5/light:state:default]"}
 String Node5Motion <motion> {mqtt="<[mosq:/node5/motion:state:default]"}
 DateTime Node5LastMotion <none>
 Number Node5RSSI <signal> {mqtt="<[mosq:/node5/rssi:state:default]"}
+String Node5IPAddr <none> {mqtt="<[mosq:/node5/ip_addr:state:default]"}

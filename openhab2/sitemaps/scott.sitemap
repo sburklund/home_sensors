@@ -58,4 +58,12 @@ sitemap scott label="Scott Sitemap" {
         Text item=Node5RSSI label="Basement Media Room (Node5) RSSI [%d]"
         Text item=RPI_Outlet_RSSI label="RPi3 Plug RSSI [%d]"
     }
+
+    Frame label="IP Addresses" {
+        Text item=Node4IPAddr label="Garage (Node 4) IP Address [%s]"
+        Text item=Node2IPAddr label="Upstairs (Node 2) IP Address [%s]"
+        Text item=Node1IPAddr label="Main Level (Node 1) IP Address [%s]"
+        Text item=Node3IPAddr label="Basement (Node 3) IP Address [%s]"
+        Text item=Node5IPAddr label="Basement Media Room (Node 5) IP Address [%s]"
+    }
 }

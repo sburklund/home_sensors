@@ -93,6 +93,13 @@ async def rssi_task(msg_queue):
         await uasyncio.sleep(config.RSSI_POLLING_PERIOD)
         await msg_queue.put((config.MQTT_TOPIC_RSSI, str(sta_if.status('rssi')).encode('ascii')))
 
+async def ip_addr_task(msg_queue):
+    sta_if = network.WLAN(network.STA_IF)
+    while True:
+        # Publish before waiting so that this shows soon after boot
+        await msg_queue.put((config.MQTT_TOPIC_IP_ADDR, sta_if.ifconfig()[0].encode('ascii')))
+        await uasyncio.sleep(config.IP_ADDR_POLLING_PERIOD)
+
 loop = uasyncio.get_event_loop()
 loop.create_task(mqtt_task(mqtt_queue))
 loop.create_task(heartbeat_task(mqtt_queue))
@@ -103,5 +110,6 @@ loop.create_task(motion_task(mqtt_queue))
 if config.HAS_SONAR_SENSOR:
     loop.create_task(sonar_task(mqtt_queue))
 loop.create_task(rssi_task(mqtt_queue))
+loop.create_task(ip_addr_task(mqtt_queue))
 loop.run_forever()
 #loop.run_until_complete(killer())

@@ -48,3 +48,16 @@ application again.
 import os
 os.listdir()
 ```
+
+# Nodes no longer responding
+If the nodes have crashed, logging output for any exceptions that were thrown are logged to `errlog` on the device.
+To print out the log from the device with either the serial or Web REPL:
+```
+with open('errlog') as f:
+  for line in f.readlines():
+    print(line, end="")
+```
+Note that all exceptions thrown since the last time the log was cleared will be in this file. Currently no timestamp
+information is added, since the builtin 'RTC' isn't accurate and NTP is not used.
+
+Also note that the log file currently has no bounds on file size. This may cause issues later on if the node frequently throws exceptions.

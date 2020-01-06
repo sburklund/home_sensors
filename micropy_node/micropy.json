@@ -9,7 +9,8 @@
     "packages": {
         "micropython-umqtt-simple": "*",
         "micropython-uasyncio": "*",
-        "micropython-uasyncio-queues": "*"
+        "micropython-uasyncio-queues": "*",
+        "micropython-logging": "*"
     },
     "config": {
         "vscode": true,

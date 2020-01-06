@@ -2,6 +2,9 @@
 import os
 import config
 import dht
+import errno
+# TODO figure out better library management
+import logging.logging as logging
 import machine
 import network
 import uasyncio
@@ -52,11 +55,17 @@ async def temp_humid_task(msg_queue):
         temp_humid_sensor = dht.DHT11(machine.Pin(config.TEMP_SENSOR_PIN))
     while True:
         await uasyncio.sleep(config.TEMP_POLLING_PERIOD)
-        temp_humid_sensor.measure()
-        temp_value = (temp_humid_sensor.temperature() * (9/5)) + 32
-        humid_value = temp_humid_sensor.humidity()
-        await msg_queue.put((config.MQTT_TOPIC_TEMP, str(temp_value).encode('ascii')))
-        await msg_queue.put((config.MQTT_TOPIC_HUMID, str(humid_value).encode('ascii')))
+        try:
+            temp_humid_sensor.measure()
+            temp_value = (temp_humid_sensor.temperature() * (9/5)) + 32
+            humid_value = temp_humid_sensor.humidity()
+            await msg_queue.put((config.MQTT_TOPIC_TEMP, str(temp_value).encode('ascii')))
+            await msg_queue.put((config.MQTT_TOPIC_HUMID, str(humid_value).encode('ascii')))
+        except OSError as e:
+            # Report errors from the DHT sensor, but don't crash the entire application
+            # Currently should only be giving warnings when the sensor times out
+            print("DHT Exception: {}".format(errno.errorcode[e.args[0]]))
+            await msg_queue.put((config.MQTT_TOPIC_WARNINGS, str("DHT Exception: {}".format(errno.errorcode[e.args[0]])).encode('ascii')))
 
 async def motion_task(msg_queue):
     motion_sensor = machine.Pin(config.MOTION_SENSOR_PIN, machine.Pin.IN)
@@ -100,16 +109,28 @@ async def ip_addr_task(msg_queue):
         await msg_queue.put((config.MQTT_TOPIC_IP_ADDR, sta_if.ifconfig()[0].encode('ascii')))
         await uasyncio.sleep(config.IP_ADDR_POLLING_PERIOD)
 
-loop = uasyncio.get_event_loop()
-loop.create_task(mqtt_task(mqtt_queue))
-loop.create_task(heartbeat_task(mqtt_queue))
-loop.create_task(blink_light_task())
-loop.create_task(light_task(mqtt_queue))
-loop.create_task(temp_humid_task(mqtt_queue))
-loop.create_task(motion_task(mqtt_queue))
-if config.HAS_SONAR_SENSOR:
-    loop.create_task(sonar_task(mqtt_queue))
-loop.create_task(rssi_task(mqtt_queue))
-loop.create_task(ip_addr_task(mqtt_queue))
-loop.run_forever()
-#loop.run_until_complete(killer())
+def run_app():
+    # Catch any unhandled exceptions and print them to the error log for debugging
+    with open("errlog",'a+') as flog:
+        logging.basicConfig(stream=flog)
+        errlog = logging.Logger('errlog')
+
+        try:
+            loop = uasyncio.get_event_loop()
+            loop.create_task(mqtt_task(mqtt_queue))
+            loop.create_task(heartbeat_task(mqtt_queue))
+            loop.create_task(blink_light_task())
+            loop.create_task(light_task(mqtt_queue))
+            loop.create_task(temp_humid_task(mqtt_queue))
+            loop.create_task(motion_task(mqtt_queue))
+            if config.HAS_SONAR_SENSOR:
+                loop.create_task(sonar_task(mqtt_queue))
+            loop.create_task(rssi_task(mqtt_queue))
+            loop.create_task(ip_addr_task(mqtt_queue))
+            loop.run_forever()
+            #loop.run_until_complete(killer())
+        except Exception as e:
+            errlog.exc(e, 'uasyncio exception')
+            raise e
+
+run_app()

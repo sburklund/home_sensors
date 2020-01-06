@@ -1,4 +1,4 @@
-sitemap scott label="Scott Sitemap" {
+sitemap scott label="Debug Sitemap" {
     Frame label="RPi3 Plug" {
         Switch item=RPI_Outlet_Switch label="RPi3 Plug"
     }

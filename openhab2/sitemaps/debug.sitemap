@@ -1,0 +1,79 @@
+sitemap scott label="Scott Sitemap" {
+    Frame label="RPi3 Plug" {
+        Switch item=RPI_Outlet_Switch label="RPi3 Plug"
+    }
+    Frame label="Garage (Node 4)" {
+        Text item=Node4LastUpdate label="Last Update [%1$tF %1$tT]"
+        Text item=Node4Motion label="Motion Detected [%s]" labelcolor=[=="Activity"="red"] valuecolor=[=="Activity"="red"]
+        Text item=Node4LastMotion label="Last Motion [%1$tF %1$tT]"
+        Text item=Node4Dist label="Distance [%.2f (in.)]"
+        Text item=garagestate label="Garage [%s]" labelcolor=[=="Sensor Error"="yellow", =="Garage Open"="red", !=""="green"] valuecolor=[=="Sensor Error"="yellow", =="Garage Open"="red", !=""="green"]
+        Text item=Node4Temp label="Temperature [%.2f]"
+        Text item=Node4Humid label="Humidity [%.2f]"
+        Text item=Node4Light label="Light Level [%d]"
+        Text item=garagelight label="Garage Light [%s]" labelcolor=[=="Garage Light on"="yellow"] valuecolor=[=="Garage Light on"="yellow"]
+        Text item=Node4Warnings label="Warning: [%s]"
+        Text item=Node4LastWarning label="Warning time: [%1$tF %1$tT]"
+    }
+
+    Frame label="Upstairs (Node 2)" {
+        Text item=Node2LastUpdate label="Last Update [%1$tF %1$tT]"
+        Text item=Node2Motion label="Motion Detected [%s]" labelcolor=[=="Activity"="red"] valuecolor=[=="Activity"="red"]
+        Text item=Node2LastMotion label="Last Motion [%1$tF %1$tT]"
+        Text item=Node2Temp label="Temperature [%.2f]"
+        Text item=Node2Humid label="Humidity [%.2f]"
+        Text item=Node2Light label="Light Level [%d]"
+        Text item=Node2Warnings label="Warning: [%s]"
+        Text item=Node2LastWarning label="Warning time: [%1$tF %1$tT]"
+    }
+
+    Frame label="Main Floor (Node 1)" {
+        Text item=Node1LastUpdate label="Last Update [%1$tF %1$tT]"
+        Text item=Node1Motion label="Motion Detected [%s]" labelcolor=[=="Activity"="red"] valuecolor=[=="Activity"="red"]
+        Text item=Node1LastMotion label="Last Motion [%1$tF %1$tT]"
+        Text item=Node1Temp label="Temperature [%.2f]"
+        Text item=Node1Humid label="Humidity [%.2f]"
+        Text item=Node1Light label="Light Level [%d]"
+        Text item=Node1Warnings label="Warning: [%s]"
+        Text item=Node1LastWarning label="Warning time: [%1$tF %1$tT]"
+    }
+
+    Frame label="Basement (Node 3)" {
+        Text item=Node3LastUpdate label="Last Update [%1$tF %1$tT]"
+        Text item=Node3Motion label="Motion Detected [%s]" labelcolor=[=="Activity"="red"] valuecolor=[=="Activity"="red"]
+        Text item=Node3LastMotion label="Last Motion [%1$tF %1$tT]"
+        Text item=Node3Temp label="Temperature [%.2f]"
+        Text item=Node3Humid label="Humidity [%.2f]"
+        Text item=Node3Light label="Light Level [%d]"
+        Text item=Node3Warnings label="Warning: [%s]"
+        Text item=Node3LastWarning label="Warning time: [%1$tF %1$tT]"
+    }
+
+    Frame label="Basement Media Room (Node 5)" {
+        Text item=Node5LastUpdate label="Last Update [%1$tF %1$tT]"
+        Text item=Node5Motion label="Motion Detected [%s]" labelcolor=[=="Activity"="red"] valuecolor=[=="Activity"="red"]
+        Text item=Node5LastMotion label="Last Motion [%1$tF %1$tT]"
+        Text item=Node5Temp label="Temperature [%.2f]"
+        Text item=Node5Humid label="Humidity [%.2f]"
+        Text item=Node5Light label="Light Level [%d]"
+        Text item=Node5Warnings label="Warning: [%s]"
+        Text item=Node5LastWarning label="Warning time: [%1$tF %1$tT]"
+    }
+
+    Frame label="Signal Strengths" {
+        Text item=Node4RSSI label="Garage (Node4) RSSI [%d]"
+        Text item=Node2RSSI label="Upstairs (Node2) RSSI [%d]"
+        Text item=Node1RSSI label="Main Level (Node1) RSSI [%d]"
+        Text item=Node3RSSI label="Basement (Node3) RSSI [%d]"
+        Text item=Node5RSSI label="Basement Media Room (Node5) RSSI [%d]"
+        Text item=RPI_Outlet_RSSI label="RPi3 Plug RSSI [%d]"
+    }
+
+    Frame label="IP Addresses" {
+        Text item=Node4IPAddr label="Garage (Node 4) IP Address [%s]"
+        Text item=Node2IPAddr label="Upstairs (Node 2) IP Address [%s]"
+        Text item=Node1IPAddr label="Main Level (Node 1) IP Address [%s]"
+        Text item=Node3IPAddr label="Basement (Node 3) IP Address [%s]"
+        Text item=Node5IPAddr label="Basement Media Room (Node 5) IP Address [%s]"
+    }
+}

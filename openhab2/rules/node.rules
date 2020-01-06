@@ -108,3 +108,38 @@ then
         postUpdate(Node5LastMotion, new DateTimeType())
     }
 end
+
+rule "node 1 last warning"
+when
+    Item Node1Warnings received update
+then
+    postUpdate(Node1LastWarning, new DateTimeType())
+end
+
+rule "node 2 last warning"
+when
+    Item Node2Warnings received update
+then
+    postUpdate(Node2LastWarning, new DateTimeType())
+end
+
+rule "node 3 last warning"
+when
+    Item Node3Warnings received update
+then
+    postUpdate(Node3LastWarning, new DateTimeType())
+end
+
+rule "node 4 last warning"
+when
+    Item Node4Warnings received update
+then
+    postUpdate(Node4LastWarning, new DateTimeType())
+end
+
+rule "node 5 last warning"
+when
+    Item Node5Warnings received update
+then
+    postUpdate(Node5LastWarning, new DateTimeType())
+end

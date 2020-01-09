@@ -12,6 +12,8 @@ import uasyncio.queues
 import ubinascii
 from umqtt.simple import MQTTClient
 import utime
+import onewire
+import ds18x20
 
 print(os.listdir())
 
@@ -132,6 +134,20 @@ async def ip_addr_task(msg_queue):
         await msg_queue.put((config.MQTT_TOPIC_IP_ADDR, sta_if.ifconfig()[0].encode('ascii')))
         await uasyncio.sleep(config.IP_ADDR_POLLING_PERIOD)
 
+async def temp_hp_task(msg_queue):
+    ds_sensor = ds18x20.DS18X20(onewire.OneWire(machine.Pin(config.TEMP_HP_SENSOR_PIN)))
+    ds_addrs = ds_sensor.scan()
+
+    while True:
+        await uasyncio.sleep(config.TEMP_HP_POLLING_PERIOD)
+        ds_sensor.convert_temp()
+        # Required wait time to read the sensor after triggering the sample
+        await uasyncio.sleep(1)
+        # Currently assume only one sensor is plugged in
+        # Convert to Fahrenheit
+        temp_hp = ds_sensor.read_temp(ds_addrs[0]) * (9/5) + 32
+        await msg_queue.put((config.MQTT_TOPIC_TEMP_HP, str(temp_hp).encode('ascii')))
+
 def run_app():
     # Catch any unhandled exceptions and print them to the error log for debugging
     with open("errlog",'a+') as flog:
@@ -150,6 +166,7 @@ def run_app():
                 loop.create_task(sonar_task(mqtt_queue))
             loop.create_task(rssi_task(mqtt_queue))
             loop.create_task(ip_addr_task(mqtt_queue))
+            loop.create_task(temp_hp_task(mqtt_queue))
             loop.run_forever()
             #loop.run_until_complete(killer())
         except Exception as e:

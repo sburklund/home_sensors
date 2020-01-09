@@ -17,6 +17,11 @@ print(os.listdir())
 
 mqtt_queue = uasyncio.queues.Queue()
 
+def print_errlog():
+    with open('errlog') as f:
+        for line in f.readlines():
+            print(line, end="")
+
 async def mqtt_task(msg_queue):
     errlog = logging.Logger('errlog')
     client_id = ubinascii.hexlify(machine.unique_id())

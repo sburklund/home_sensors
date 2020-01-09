@@ -8,7 +8,7 @@ sitemap scott label="Scott Sitemap" {
         Text item=Node4LastMotion label="Last Motion [%1$tF %1$tT]"
         Text item=Node4Dist label="Distance [%.2f (in.)]"
         Text item=garagestate label="Garage [%s]" labelcolor=[=="Sensor Error"="yellow", =="Garage Open"="red", !=""="green"] valuecolor=[=="Sensor Error"="yellow", =="Garage Open"="red", !=""="green"]
-        Text item=Node4Temp label="Temperature [%.2f]"
+        Text item=Node4TempHP label="Temperature [%.2f]"
         Text item=Node4Humid label="Humidity [%.2f]"
         Text item=Node4Light label="Light Level [%d]"
         Text item=garagelight label="Garage Light [%s]" labelcolor=[=="Garage Light on"="yellow"] valuecolor=[=="Garage Light on"="yellow"]
@@ -18,7 +18,7 @@ sitemap scott label="Scott Sitemap" {
         Text item=Node2LastUpdate label="Last Update [%1$tF %1$tT]"
         Text item=Node2Motion label="Motion Detected [%s]" labelcolor=[=="Activity"="red"] valuecolor=[=="Activity"="red"]
         Text item=Node2LastMotion label="Last Motion [%1$tF %1$tT]"
-        Text item=Node2Temp label="Temperature [%.2f]"
+        Text item=Node2TempHP label="Temperature [%.2f]"
         Text item=Node2Humid label="Humidity [%.2f]"
         Text item=Node2Light label="Light Level [%d]"
     }
@@ -27,7 +27,7 @@ sitemap scott label="Scott Sitemap" {
         Text item=Node1LastUpdate label="Last Update [%1$tF %1$tT]"
         Text item=Node1Motion label="Motion Detected [%s]" labelcolor=[=="Activity"="red"] valuecolor=[=="Activity"="red"]
         Text item=Node1LastMotion label="Last Motion [%1$tF %1$tT]"
-        Text item=Node1Temp label="Temperature [%.2f]"
+        Text item=Node1TempHP label="Temperature [%.2f]"
         Text item=Node1Humid label="Humidity [%.2f]"
         Text item=Node1Light label="Light Level [%d]"
     }
@@ -36,7 +36,7 @@ sitemap scott label="Scott Sitemap" {
         Text item=Node3LastUpdate label="Last Update [%1$tF %1$tT]"
         Text item=Node3Motion label="Motion Detected [%s]" labelcolor=[=="Activity"="red"] valuecolor=[=="Activity"="red"]
         Text item=Node3LastMotion label="Last Motion [%1$tF %1$tT]"
-        Text item=Node3Temp label="Temperature [%.2f]"
+        Text item=Node3TempHP label="Temperature [%.2f]"
         Text item=Node3Humid label="Humidity [%.2f]"
         Text item=Node3Light label="Light Level [%d]"
     }
@@ -45,7 +45,7 @@ sitemap scott label="Scott Sitemap" {
         Text item=Node5LastUpdate label="Last Update [%1$tF %1$tT]"
         Text item=Node5Motion label="Motion Detected [%s]" labelcolor=[=="Activity"="red"] valuecolor=[=="Activity"="red"]
         Text item=Node5LastMotion label="Last Motion [%1$tF %1$tT]"
-        Text item=Node5Temp label="Temperature [%.2f]"
+        Text item=Node5TempHP label="Temperature [%.2f]"
         Text item=Node5Humid label="Humidity [%.2f]"
         Text item=Node5Light label="Light Level [%d]"
     }

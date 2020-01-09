@@ -1,6 +1,7 @@
 String Node1Heartbeat <none> {mqtt="<[mosq:/node1/heartbeat:state:default]"}
 DateTime Node1LastUpdate <none> {mqtt="<[mosq:/node1/time:state:default]"}
 Number Node1Temp <temperature> {mqtt="<[mosq:/node1/temp:state:default]"}
+Number Node1TempHP <temperature> {mqtt="<[mosq:/node1/temp_hp:state:default]"}
 Number Node1Humid <humidity> {mqtt="<[mosq:/node1/humid:state:default]"}
 Number Node1Light <lightbulb> {mqtt="<[mosq:/node1/light:state:default]"}
 String Node1Motion <motion> {mqtt="<[mosq:/node1/motion:state:default]"}
@@ -13,6 +14,7 @@ DateTime Node1LastWarning <none>
 String Node2Heartbeat <none> {mqtt="<[mosq:/node2/heartbeat:state:default]"}
 DateTime Node2LastUpdate <none> {mqtt="<[mosq:/node2/time:state:default]"}
 Number Node2Temp <temperature> {mqtt="<[mosq:/node2/temp:state:default]"}
+Number Node2TempHP <temperature> {mqtt="<[mosq:/node2/temp_hp:state:default]"}
 Number Node2Humid <humidity> {mqtt="<[mosq:/node2/humid:state:default]"}
 Number Node2Light <lightbulb> {mqtt="<[mosq:/node2/light:state:default]"}
 String Node2Motion <motion> {mqtt="<[mosq:/node2/motion:state:default]"}
@@ -25,6 +27,7 @@ DateTime Node2LastWarning <none>
 String Node3Heartbeat <none> {mqtt="<[mosq:/node3/heartbeat:state:default]"}
 DateTime Node3LastUpdate <none> {mqtt="<[mosq:/node3/time:state:default]"}
 Number Node3Temp <temperature> {mqtt="<[mosq:/node3/temp:state:default]"}
+Number Node3TempHP <temperature> {mqtt="<[mosq:/node3/temp_hp:state:default]"}
 Number Node3Humid <humidity> {mqtt="<[mosq:/node3/humid:state:default]"}
 Number Node3Light <lightbulb> {mqtt="<[mosq:/node3/light:state:default]"}
 String Node3Motion <motion> {mqtt="<[mosq:/node3/motion:state:default]"}
@@ -37,6 +40,7 @@ DateTime Node3LastWarning <none>
 String Node4Heartbeat <none> {mqtt="<[mosq:/node4/heartbeat:state:default]"}
 DateTime Node4LastUpdate <none> {mqtt="<[mosq:/node4/time:state:default]"}
 Number Node4Temp <temperature> {mqtt="<[mosq:/node4/temp:state:default]"}
+Number Node4TempHP <temperature> {mqtt="<[mosq:/node4/temp_hp:state:default]"}
 Number Node4Humid <humidity> {mqtt="<[mosq:/node4/humid:state:default]"}
 Number Node4Light <lightbulb> {mqtt="<[mosq:/node4/light:state:default]"}
 String Node4Motion <motion> {mqtt="<[mosq:/node4/motion:state:default]"}
@@ -52,6 +56,7 @@ DateTime Node4LastWarning <none>
 String Node5Heartbeat <none> {mqtt="<[mosq:/node5/heartbeat:state:default]"}
 DateTime Node5LastUpdate <none> {mqtt="<[mosq:/node5/time:state:default]"}
 Number Node5Temp <temperature> {mqtt="<[mosq:/node5/temp:state:default]"}
+Number Node5TempHP <temperature> {mqtt="<[mosq:/node5/temp_hp:state:default]"}
 Number Node5Humid <humidity> {mqtt="<[mosq:/node5/humid:state:default]"}
 Number Node5Light <lightbulb> {mqtt="<[mosq:/node5/light:state:default]"}
 String Node5Motion <motion> {mqtt="<[mosq:/node5/motion:state:default]"}

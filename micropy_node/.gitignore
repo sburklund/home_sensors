@@ -1,5 +1,6 @@
 # Ignore the configuration file that has sensitive information
 src/config.py
+src/webrepl_cfg.py
 
 # Created by https://www.gitignore.io/api/python,visualstudiocode
 # Edit at https://www.gitignore.io/?templates=python,visualstudiocode

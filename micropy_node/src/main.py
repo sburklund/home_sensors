@@ -18,12 +18,30 @@ print(os.listdir())
 mqtt_queue = uasyncio.queues.Queue()
 
 async def mqtt_task(msg_queue):
+    errlog = logging.Logger('errlog')
     client_id = ubinascii.hexlify(machine.unique_id())
     client = MQTTClient(client_id, config.MQTT_HOST)
     client.connect()
     while True:
         result = await msg_queue.get()
-        client.publish(result[0], result[1])
+        try:
+            client.publish(result[0], result[1])
+        except OSError as e:
+            err_string = "MQTT Exception: {}".format(errno.errorcode[e.args[0]])
+            errlog.error(err_string)
+            print(err_string)
+            if e.args[0] == errno.ECONNABORTED:
+                # Attempt to reconnect when the connection is aborted, but drop the message if the queue is full
+                client.connect()
+                try:
+                    msg_queue.put_nowait(result)
+                    msg_queue.put_nowait((config.MQTT_TOPIC_WARNINGS, str("MQTT Exception: {}".format(errno.errorcode[e.args[0]])).encode('ascii')))
+                except uasyncio.queues.QueueFull as e:
+                    errlog.error("MQTT Queue full. Could not put exception into queue")
+                    print("MQTT Queue full. Could not put exception into queue")
+            else:
+                raise e
+
 
 async def killer():
     await uasyncio.sleep(60)

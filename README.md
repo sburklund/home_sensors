@@ -61,3 +61,7 @@ Note that all exceptions thrown since the last time the log was cleared will be 
 information is added, since the builtin 'RTC' isn't accurate and NTP is not used.
 
 Also note that the log file currently has no bounds on file size. This may cause issues later on if the node frequently throws exceptions.
+
+# Specify Openhab config path
+Modify `/etc/default/openhab2`, and change the `OPENHAB_CONF=` to point to the directory with the configuration folder (e.g. openhab2 in this repo).
+

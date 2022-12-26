@@ -139,14 +139,18 @@ async def temp_hp_task(msg_queue):
     ds_addrs = ds_sensor.scan()
 
     while True:
-        await uasyncio.sleep(config.TEMP_HP_POLLING_PERIOD)
-        ds_sensor.convert_temp()
-        # Required wait time to read the sensor after triggering the sample
-        await uasyncio.sleep(1)
-        # Currently assume only one sensor is plugged in
-        # Convert to Fahrenheit
-        temp_hp = ds_sensor.read_temp(ds_addrs[0]) * (9/5) + 32
-        await msg_queue.put((config.MQTT_TOPIC_TEMP_HP, str(temp_hp).encode('ascii')))
+        try:
+            await uasyncio.sleep(config.TEMP_HP_POLLING_PERIOD)
+            ds_sensor.convert_temp()
+            # Required wait time to read the sensor after triggering the sample
+            await uasyncio.sleep(1)
+            # Currently assume only one sensor is plugged in
+            # Convert to Fahrenheit
+            temp_hp = ds_sensor.read_temp(ds_addrs[0]) * (9/5) + 32
+            await msg_queue.put((config.MQTT_TOPIC_TEMP_HP, str(temp_hp).encode('ascii')))
+        except onewire.OneWireError as e:
+            print("Generic OneWire Exception")
+            await msg_queue.put((config.MQTT_TOPIC_WARNINGS, str("OneWire Exception").encode('ascii')))
 
 def run_app():
     # Catch any unhandled exceptions and print them to the error log for debugging
@@ -169,8 +173,22 @@ def run_app():
             loop.create_task(temp_hp_task(mqtt_queue))
             loop.run_forever()
             #loop.run_until_complete(killer())
+        except OSError as e:
+            if e.args[0] == errno.EHOSTUNREACH:
+                errlog.error('Restartting app: EHOSTUNREACH')
+            elif e.args[0] == errno.ECONNABORTED:
+                errlog.error('Restarting app: ECONNABORTED')
+            elif e.args[0] == errno.ECONNRESET:
+                errlog.error('Restarting app: ECONNRESET')
+            else:
+                # Crash on other unexpected errors
+                errlog.exc(e, 'Unhandled OSError')
+                raise e
+            # Handle known connection errors by just resetting.
+            machine.reset()
         except Exception as e:
-            errlog.exc(e, 'uasyncio exception')
+            # Crash on other unexpected errors
+            errlog.exc(e, 'Unhandled unknown exception')
             raise e
 
 run_app()
